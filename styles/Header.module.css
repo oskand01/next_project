@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(44, 45, 46);
+  height: 5rem;
+  width: 100%;
+  padding: 1rem;
+  color: antiquewhite;
+
+}
+
+.title {
+  cursor: pointer;
+  transition: 1s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 200;
+  font-size: 2rem;
+}
+
+.title:hover {
+  color: white;
+}
+
+.button {
+  border: none;
+  background: transparent;
+}
+
+.cart {
+  height: 1.8rem;
+  width: 1.8rem;
+  cursor: pointer;
+  transition: 1s;
+  font-weight: 200;
+}
+
+.cart:hover {
+  transform: scale(1.07);
+  color: white;
+}
