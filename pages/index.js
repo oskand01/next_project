@@ -1,6 +1,6 @@
 
 import styles from '../styles/Home.module.css'
-import CharacterComp from './characterComp';
+import CharacterComp from '../components/characterComp';
 import { useEffect, useState } from 'react';
 import arrayShuffle from 'array-shuffle';
 
