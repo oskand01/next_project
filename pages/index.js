@@ -1,7 +1,9 @@
+
 import styles from '../styles/Home.module.css'
 import CharacterComp from './characterComp';
 import { useEffect, useState } from 'react';
 import arrayShuffle from 'array-shuffle';
+
 
 export default function Home() {
   const [characters, setCharacters] = useState(); 
@@ -31,7 +33,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>Buy a humanss</h1>
       <div className ={styles.characterWindow}>{
         characters.map((character) =>(
           
@@ -51,7 +52,7 @@ export default function Home() {
       </div>
      
     </div>
-  )
+  );
 }
 
 function generatePrice (){
