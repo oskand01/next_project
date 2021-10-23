@@ -5,21 +5,21 @@ export default function characterComp(props){
     return(
        <div className = {styles.characterCard}>
            
-           <div className = {styles.characterCardBody}>
+           
                 <Image onClick={() => {
                   props.openCharInfo(props.id)
-                }}  className={styles.characterImage} width={120} height={80} alt="test" src={activeImage} />
-                <h5 className={styles.cardName}>{props.name}</h5>
-                <div className = {styles.cardInfoBox}>
-
-                   <p className = {styles.price}>{props.price} kr</p>    
-                </div>
+                }}  className={styles.characterImage} width={120} height={90} alt="test" src={activeImage} />
                 
-                <button className={styles.hireButton} onClick =  {() => {
+                <div className = {styles.cardInfoBox}>
+                  <p className = {styles.cardName}>{props.name}</p>
+                   
+                  <p className ={styles.price}>{props.price} kr</p>    
+                   <button className={styles.hireButton} onClick =  {() => {
                   props.addToCart(props.id);
                 }}>hire</button>
-           </div>
-       </div>
+                </div>
+         </div>
+       
       
         
     )

@@ -32,7 +32,7 @@ export default function Home() {
   if (typeof(characters) === 'undefined') return <div>error!</div>
 
   return (
-    <div className={styles.container}>
+    
       <div className ={styles.characterWindow}>{
         characters.map((character) =>(
           
@@ -51,7 +51,7 @@ export default function Home() {
 
       </div>
      
-    </div>
+   
   );
 }
 
