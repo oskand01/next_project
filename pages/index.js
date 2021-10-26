@@ -1,34 +1,24 @@
-import styles from "../styles/Home.module.css";
-import CharacterComp from "../components/characterComp";
-import { useEffect, useState, useContext } from "react";
-import arrayShuffle from "array-shuffle";
-import { CartContext } from "../components/context/CartProvider";
+
+import styles from '../styles/Home.module.css'
+import CharacterComp from '../components/characterComp';
+import { useEffect, useState } from 'react';
+import arrayShuffle from 'array-shuffle';
 
 export default function Home({ charProducts }) {
-  const cart = useContext(CartContext);
-
-  function routeToCharacterInfo(id) {
-    console.log(id);
-  }
-
-  function addToCart(product) {
-    cart.setCart([...cart.cart, product]);
-  }
 
   return (
     <div className={styles.container}>
       <div className={styles.characterWindow}>
         {charProducts.map((character) => (
           <CharacterComp
-            this={character}
-            name={character.name}
-            charImage={character.image}
-            price={character.price}
-            id={character.id}
-            key={character.id}
-            openCharInfo={routeToCharacterInfo}
-            addToCart={addToCart}
-          />
+          name = {character.name}
+          charImage = {character.image}
+          price = {character.price}
+          id = {character.id}
+          key = {character.id}
+          openCharInfo = {routeToCharacterInfo}
+          addToCart = {addToCart}
+         />
         ))}
       </div>
     </div>
@@ -43,15 +33,29 @@ export async function getStaticProps() {
     Object.assign(data[i], { id: i });
     +Object.assign(data[i], { price: generatePrice() });
     if (data[i].image === "") {
-      data[i].image = "/../public/avatar.jpg"
+      data[i].image = "/../public/avatar.jpg";
     }
   }
-  const shuffledData = arrayShuffle(data);
-  return { props: { charProducts: shuffledData } };
+  const withPic = data.filter((item) => item.image !== "/../public/avatar.jpg");
+  const noPic = data.filter((item) => item.image === "/../public/avatar.jpg");
+  const shuffledWithPic = arrayShuffle(withPic);
+  const shuffledNoPic = arrayShuffle(noPic);
+
+  return { props: { charProducts: [...shuffledWithPic, ...shuffledNoPic] } };
 }
 
-function generatePrice() {
+function generatePrice (){
   const maxPrice = 10000;
-
+  
   return Math.floor(Math.random() * maxPrice);
+  
+}
+
+function routeToCharacterInfo(id){
+  console.log(id)
+}
+
+function addToCart (id) {
+
+  console.log(id)
 }

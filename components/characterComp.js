@@ -31,7 +31,7 @@ export default function characterComp(props) {
       <button
         className={styles.hireButton}
         onClick={() => {
-          props.addToCart(props.this);
+          props.addToCart(props.id);
         }}
       >
         HIRE
