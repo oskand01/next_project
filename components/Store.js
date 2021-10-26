@@ -3,6 +3,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import styles from "../styles/Cart.module.css";
 import Link from "next/link";
 import CartItem from "../components/CartItem";
+import Item from "./Item";
 
 export default function Store(props) {
   const [total, setTotal] = useState();
