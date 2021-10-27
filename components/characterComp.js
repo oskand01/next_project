@@ -1,9 +1,13 @@
 import Image from "next/dist/client/image";
 import styles from "../styles/Home.module.css";
+import Link from "next/dist/client/link";
+
+
 export default function characterComp(props) {
   
   return (
     <div className={styles.characterCard}>
+     
       <div className={styles.cardInfoBox}>
         <p className={styles.cardName}>{props.name}</p>
       </div>
@@ -15,6 +19,7 @@ export default function characterComp(props) {
             : { border: "none" }
         }
       >
+      <Link href={`/${props.name}`}>
         <Image
           onClick={() => {
             props.openCharInfo(props.id);
@@ -25,6 +30,7 @@ export default function characterComp(props) {
           alt="test"
           src={props.charImage}
         />
+        </Link>
         <p className={styles.price}>{props.price}:-</p>
       </div>
 
@@ -35,7 +41,7 @@ export default function characterComp(props) {
         }}
       >
         HIRE
-      </button>
+      </button>     
     </div>
   );
 }
