@@ -1,0 +1,131 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    width: 100%;
+    min-height: calc(100vh - 5rem);
+    color: rgb(44, 45, 46);
+  }  
+   /* CARTITEM */
+  
+  .cartItem {
+    width: 96%;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid lightgray;
+    max-width: 750px;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .main {
+    display: flex;
+    width: 100%;
+    gap: 1.5rem;
+  }
+  
+  .cartItem:last-child {
+    border-bottom: none;
+  }
+  
+  .imageHolder {
+    position: relative;
+    width: 22%;
+    height: 12rem;
+    min-width: 100px;
+  }
+  
+  .delete {
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    color: rgb(71, 73, 76);
+    transition: 0.5s;
+  }
+  
+  .info {
+    width: 65%;
+  }
+  
+  .info h2 {
+    margin: 0;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  
+  .sidebar h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin: 0;
+    font-weight: 400;
+  }
+  
+  .delete:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    color: rgb(44, 45, 46);
+  }
+  
+  @media screen and (max-width: 800px) {
+    .imageHolder {
+      width: 30%;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .store {
+      padding: 2rem 1rem;
+    }
+  
+    .cartItem {
+      gap: 1rem;
+    }
+  
+    .imageHolder {
+      height: 11rem;
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    .cartItem {
+      flex-wrap: wrap;
+    }
+  
+    .imageHolder {
+      width: 30%;
+      height: 9rem;
+    }
+  
+    .info {
+      width: calc(70% -1rem);
+    }
+  
+    .sidebar {
+      width: 100%;
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .imageHolder {
+      margin-top: 0.4rem;
+      height: 8rem;
+      align-self: flex-start;
+    }
+  
+    .info {
+      align-self: flex-start;
+    }
+  
+    .info h2 {
+      font-size: 1.3rem;
+    }
+  }
+  
