@@ -3,10 +3,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import styles from "../styles/Cart.module.css";
 import Link from "next/link";
 import CartItem from "../components/CartItem";
+import ConfirmOrder from "./ConfirmOrder";
 
 export default function Store(props) {
   const [total, setTotal] = useState();
   const [products, setProducts] = useState([]);
+  const [order, setOrder] = useState(false);
 
   const items = products.map((item) => (
     <CartItem
@@ -27,17 +29,25 @@ export default function Store(props) {
       price += item.price;
     });
     setTotal(price);
-  });
+  }, [products]);
 
-  function productsHandler(name) {
-    setProducts(products.filter((product) => product.name !== name));
+  function productsHandler(item) {
+    setProducts(products.filter((product) => product !== item));
   }
 
-  function clearProducts() {
+  function confirmOrder() {
+    setOrder(true);
+  }
+
+  function resetCart() {
     setProducts([]);
+    //setContext when it´s done
+    setOrder(false);
   }
 
-  return (
+  return order ? (
+    <ConfirmOrder products={products} total={total} resetOrder={resetCart} />
+  ) : (
     <div className={styles.store}>
       <div className={styles.sheader}>
         <AiOutlineShoppingCart className={styles.icon} />
@@ -56,7 +66,7 @@ export default function Store(props) {
       <div className={styles.sfooter}>
         <h3 className={styles.total}>Total: {total}:-</h3>
         {total > 0 ? (
-          <button className={styles.confirm} onClick={clearProducts}>
+          <button className={styles.confirm} onClick={confirmOrder}>
             CONFIRM ORDER
           </button>
         ) : (
