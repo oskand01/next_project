@@ -1,6 +1,7 @@
 import CharacterComp from "./characterComp";
 import { useEffect, useState } from "react";
 import styles from "../styles/Pagination.module.css";
+import { GrNext, GrPrevious } from "react-icons/gr";
 
 export default function Pagination({ data, length, pageLimit, dataLimit }) {
   const [pages, setPages] = useState();
@@ -40,7 +41,7 @@ export default function Pagination({ data, length, pageLimit, dataLimit }) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.characterWindow}>
         {getPaginatedData().map((character) => (
           <CharacterComp
@@ -52,14 +53,36 @@ export default function Pagination({ data, length, pageLimit, dataLimit }) {
           />
         ))}
       </div>
-      <div>
-        <button onClick={goToPreviousPage} disabled={currentPage === 1}>Prev</button>
-        {getPaginationGroup().map((item, index) => (
-          <button key={index} onClick={changePage} disabled={pages <= index} className={styles.pageNum}>
-            <span>{item}</span>
-          </button>
-        ))}
-        <button onClick={goToNextPage} disabled={currentPage === pages}>Next</button>
+      <div className={styles.paginationContainer}>
+        <button
+          className={styles.previous}
+          onClick={goToPreviousPage}
+          disabled={currentPage === 1}
+        >
+          <GrPrevious />
+        </button>
+        <div className={styles.pages}>
+          {getPaginationGroup().map((item, index) => (
+            <button
+              key={index}
+              onClick={changePage}
+              disabled={pages < item}
+              className={
+                item !== currentPage ? styles.pageNum : styles.pageNumActive
+              }
+            >
+              <span>{item}</span>
+            </button>
+          ))}
+        </div>
+
+        <button
+          className={styles.next}
+          onClick={goToNextPage}
+          disabled={currentPage === pages}
+        >
+          <GrNext />
+        </button>
       </div>
     </div>
   );
