@@ -1,0 +1,26 @@
+.characterWindow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1400px;
+  }
+
+  .pageNum:disabled {
+      display: none;
+  }
+
+  .previous,
+  .next {
+      cursor: pointer;
+  }
+
+  previous.disabled,
+  next.disabled {
+      pointer-events: none;
+      display: none;
+  }
