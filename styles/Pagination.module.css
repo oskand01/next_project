@@ -1,72 +1,78 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: calc(100vh-11rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh-11rem);
 }
 
-
-
 .characterWindow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 100%;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding: 2rem;
-    min-width: 100%;
-    max-width: 1400px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+  min-width: 100%;
+  max-width: 1300px;
+}
 
-  .paginationContainer {
-      width: 80%;
-      padding: 0rem 4rem 0rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 4rem;
-      justify-self: end;
-  }
+.paginationContainer {
+  width: 80%;
+  padding: 0rem 4rem 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  justify-self: end;
+}
 
-  .pages {
-      display: flex;
-      gap: 1rem;
-  }
+.pages {
+  display: flex;
+  gap: 1rem;
+}
 
-  .paginationContainer button {
-      background: none;
-      border: none;
-      font-size: 1rem;
-      color: rgb(44, 45, 46);
-      transition: .3s;
-      display: flex;
-      align-items: center;
-  }
+.paginationContainer button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: rgb(44, 45, 46);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
 
-  .previous:hover,.next:hover,.pageNum:hover {
-      transform: scale(1.1);
-      color: rgb(24, 25, 26);
-      cursor: pointer;
-  }
+.previous:hover,
+.next:hover,
+.pageNum:hover {
+  transform: scale(1.1);
+  color: rgb(24, 25, 26);
+  cursor: pointer;
+}
 
-  .pageNum:disabled {
-      display: none;
-  }
+.pageNum:disabled {
+  display: none;
+}
 
-  .pageNumActive {
-    color: rgb(24, 25, 26) !important;
-    font-size: 1.2rem !important;
-    cursor: initial !important;
-  }
+.pageNumActive {
+  color: rgb(24, 25, 26) !important;
+  font-size: 1.2rem !important;
+  cursor: initial !important;
+}
 
-  .previous,
-  .next {
-      cursor: pointer;
-  }
+.previous,
+.next {
+  cursor: pointer;
+}
 
-  .previous:disabled,
-  .next:disabled {
-      pointer-events: none;
-      visibility: hidden;
+.previous:disabled,
+.next:disabled {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 1340px) {
+  .characterWindow {
+    min-width: 1300px;
   }
+}
