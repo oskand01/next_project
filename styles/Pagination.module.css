@@ -43,11 +43,9 @@
       align-items: center;
   }
 
-  .previous,
-  .next,
-  .pageNum:hover {
+  .previous:hover,.next:hover,.pageNum:hover {
       transform: scale(1.1);
-      color: black;
+      color: rgb(24, 25, 26);
       cursor: pointer;
   }
 
@@ -57,7 +55,7 @@
 
   .pageNumActive {
     color: rgb(24, 25, 26) !important;
-    font-size: 1.3rem !important;
+    font-size: 1.2rem !important;
     cursor: initial !important;
   }
 

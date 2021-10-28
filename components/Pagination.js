@@ -77,7 +77,7 @@ export default function Pagination({ data, length, pageLimit, dataLimit }) {
         </div>
 
         <button
-          className={styles.prev}
+          className={styles.next}
           onClick={goToNextPage}
           disabled={currentPage === pages}
         >
