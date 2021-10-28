@@ -11,6 +11,7 @@ export default function characterComp(props) {
       <div className={styles.cardInfoBox}>
         <p className={styles.cardName}>{props.name}</p>
       </div>
+      <Link href={`/${props.name}`}>
       <div
         className={styles.imageHolder}
         style={
@@ -18,8 +19,7 @@ export default function characterComp(props) {
             ? { border: "1px solid rgb(44, 45, 46)" }
             : { border: "none" }
         }
-      >
-      <Link href={`/${props.name}`}>
+      >      
         <Image
           onClick={() => {
             props.openCharInfo(props.id);
@@ -30,9 +30,10 @@ export default function characterComp(props) {
           alt="test"
           src={props.charImage}
         />
-        </Link>
+        
         <p className={styles.price}>{props.price}:-</p>
       </div>
+      </Link>
 
       <button
         className={styles.hireButton}
