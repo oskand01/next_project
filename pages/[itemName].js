@@ -13,7 +13,6 @@ export async function getStaticPaths(){
       },
     };
   });
-
   return{
     paths : paths,
     fallback : false
@@ -37,7 +36,7 @@ export default function Item ({char}){
     console.log(char.name);  
     console.log(char);  
     return (
-      <div className={styles.cartItem}>
+      <div className={styles.item}>
         <div className={styles.main}>
           <div className={styles.imageHolder}>
             <Image
@@ -61,15 +60,29 @@ export default function Item ({char}){
               <b>Born: </b>
               {char.dateOfBirth}
             </p>
-          </div>
+
+            <p>
+              <b>Eye Colour: </b>
+              {char.eyeColour}
+            </p>
+            <p>
+              <b>Hair Colour: </b>
+              {char.hairColour}
+            </p>
+            <p>
+              <b>Ancestry: </b>
+              {char.ancestry}
+            </p>
+            </div>  
+        <div >         
+          <button className={styles.button } onClick={addToCart} > Add in cart</button>              
         </div>
-  
-        <div className={styles.sidebar}>
-         <Link href={"/"}>
-          <button > Back </button>
-          </Link>
-          
-        </div>
-      </div>
+          </div>        
+       </div>
     );
+  }
+
+  export function addToCart(char){
+    console.log(char);
+
   }

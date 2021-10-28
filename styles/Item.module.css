@@ -6,9 +6,8 @@
     min-height: calc(100vh - 5rem);
     color: rgb(44, 45, 46);
   }  
-   /* CARTITEM */
-  
-  .cartItem {
+   /* CARTITEM */  
+  .item {
     width: 96%;
     padding: 2rem 0;
     border-bottom: 0.5px solid lightgray;
@@ -22,78 +21,50 @@
   .main {
     display: flex;
     width: 100%;
-    gap: 1.5rem;
+    gap: 5rem;
   }
-  
-  .cartItem:last-child {
-    border-bottom: none;
-  }
+
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: auto;
+    width: max-content;
+  }  
   
   .imageHolder {
     position: relative;
-    width: 22%;
-    height: 12rem;
+    width: 100%;    
+    height: 38rem;
     min-width: 100px;
-  }
+    padding-left: 20rem;
+    margin-left: 20rem;
+  }  
   
-  .delete {
-    font-size: 1.5rem;
-    background: transparent;
-    border: none;
-    color: rgb(71, 73, 76);
-    transition: 0.5s;
-  }
   
   .info {
-    width: 65%;
+    
+    min-width: fit-content;
   }
   
   .info h2 {
     margin: 0;
-  }
-  
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-  
-  .sidebar h3 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    margin: 0;
-    font-weight: 400;
-  }
-  
-  .delete:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    color: rgb(44, 45, 46);
-  }
+  }  
   
   @media screen and (max-width: 800px) {
     .imageHolder {
       width: 30%;
     }
-  }
-  
-  @media screen and (max-width: 700px) {
-    .store {
-      padding: 2rem 1rem;
-    }
-  
-    .cartItem {
-      gap: 1rem;
-    }
-  
-    .imageHolder {
-      height: 11rem;
-    }
-  }
+  }     
   
   @media screen and (max-width: 500px) {
-    .cartItem {
+    .item {
       flex-wrap: wrap;
     }
   
@@ -104,13 +75,8 @@
   
     .info {
       width: calc(70% -1rem);
-    }
-  
-    .sidebar {
-      width: 100%;
-      flex-direction: row;
-      align-items: flex-end;
-    }
+    }  
+    
   }
   
   @media screen and (max-width: 400px) {
