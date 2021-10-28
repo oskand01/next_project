@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import CharacterComp from "../components/characterComp";
+import Pagination from "../components/Pagination";
 import Categories from "../components/Categories";
 import { useEffect, useState } from "react";
 import arrayShuffle from "array-shuffle";
@@ -30,13 +30,13 @@ export default function Home({ charProducts }) {
   };
 
   const handleSelection = (e) => {
-    const query = e.target.innerText
+    const query = e.target.textContent
     setCharacterDisplay(
       initialState.filter((character) => {
         if (character.gender === query.toLowerCase()) {
           return character;
         }
-        if (character.house === e.target.innerText) {
+        if (character.house === query) {
           return character;
         }
       })
@@ -53,19 +53,7 @@ export default function Home({ charProducts }) {
     <div>
       <Categories filter={filter} onSearch={handleSearch} onClick={handleSelection} clearFilter={clearFilter} />
       <div className={styles.container}>
-        <div className={styles.characterWindow}>
-          {characterDisplay.map((character) => (
-            <CharacterComp
-              name={character.name}
-              charImage={character.image}
-              price={character.price}
-              id={character.id}
-              key={character.id}
-              openCharInfo={routeToCharacterInfo}
-              addToCart={addToCart}
-            />
-          ))}
-        </div>
+          <Pagination data={characterDisplay} length={characterDisplay.length} pageLimit={5} dataLimit={12} />
       </div>
     </div>
   );
