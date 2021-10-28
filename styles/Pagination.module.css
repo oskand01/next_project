@@ -1,3 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 .characterWindow {
     display: flex;
     flex-direction: row;
@@ -10,8 +18,47 @@
     max-width: 1400px;
   }
 
+  .paginationContainer {
+      width: 80%;
+      padding: 0rem 4rem 0rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+      justify-self: end;
+  }
+
+  .pages {
+      display: flex;
+      gap: 1rem;
+  }
+
+  .paginationContainer button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: rgb(44, 45, 46);
+      transition: .3s;
+      display: flex;
+      align-items: center;
+  }
+
+  .previous,
+  .next,
+  .pageNum:hover {
+      transform: scale(1.1);
+      color: black;
+      cursor: pointer;
+  }
+
   .pageNum:disabled {
       display: none;
+  }
+
+  .pageNumActive {
+    color: rgb(24, 25, 26) !important;
+    font-size: 1.3rem !important;
+    cursor: initial !important;
   }
 
   .previous,
@@ -19,8 +66,8 @@
       cursor: pointer;
   }
 
-  previous.disabled,
-  next.disabled {
+  .previous:disabled,
+  .next:disabled {
       pointer-events: none;
-      display: none;
+      visibility: hidden;
   }
