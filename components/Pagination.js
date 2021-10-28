@@ -67,10 +67,10 @@ export default function Pagination({ data, length, pageLimit, dataLimit }) {
               key={index}
               onClick={changePage}
               disabled={pages < item}
-              className={item !== currentPage ? styles.pageNum : styles.pageNumActive}
-              
+              className={
+                item !== currentPage ? styles.pageNum : styles.pageNumActive
+              }
             >
-              {console.log(index,item, currentPage)}
               <span>{item}</span>
             </button>
           ))}
