@@ -3,34 +3,45 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import styles from "../styles/Cart.module.css";
 import Link from "next/link";
 import CartItem from "../components/CartItem";
+import {useContext} from "react";
+import{ThemeContext} from "../components/context/ThemeProvider";
 
 export default function Store(props) {
   const [total, setTotal] = useState();
-  const [products, setProducts] = useState([]);
+  const themeContext = useContext(ThemeContext);
+  let currentCart = themeContext.shoppingCart;
+  console.log(themeContext.shoppingCart);
 
-  const items = products.map((item) => (
-    <CartItem
-      key={item.name + Math.random().toString()}
-      item={item}
-      productsHandler={productsHandler}
-    />
-  ));
-
-  useEffect(() => {
-    setProducts(props.items);
-  }, []);
-
+  let items = false;
+  if(currentCart != false){
+    updateCart()
+  }
   useEffect(() => {
     let price = 0;
 
-    products.forEach((item) => {
+    currentCart.forEach((item) => {
       price += item.price;
     });
     setTotal(price);
   });
-
+ 
+  useEffect(() => {
+    console.log("in use effect");
+    updateCart();
+  },currentCart);
+ 
+ function updateCart(){
+  items = currentCart.map((item) => (
+    <CartItem
+     key={item.name + Math.random().toString()}
+     item={item}
+     productsHandler={productsHandler}
+    />
+));
+ }
+  
   function productsHandler(name) {
-    setProducts(products.filter((product) => product.name !== name));
+    themeContext.shoppingCartDispatch(currentCart.filter((product) => product.name !== name));
   }
 
   function clearProducts() {
