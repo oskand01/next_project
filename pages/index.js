@@ -88,8 +88,8 @@ export async function getStaticProps() {
   const data = await res.json();
 
   for (let i = 0; i < data.length; i++) {
-    Object.assign(data[i], { id: i });
-    +Object.assign(data[i], { price: generatePrice() });
+    data[i].id = i;
+    data[i].price = generatePrice();
     if (data[i].image === "") {
       data[i].image = "/avatar.jpg";
     }
@@ -104,6 +104,6 @@ export async function getStaticProps() {
 
 function generatePrice() {
   const maxPrice = 10000;
-
-  return Math.floor(Math.random() * maxPrice);
+  const price = Math.floor(Math.random() * maxPrice).toString();
+  return parseInt(price.substr(0, price.length - 2) + "99");
 }

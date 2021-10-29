@@ -53,12 +53,13 @@ export default function Store() {
   }
 
   function resetCart() {
+    
     themeContext.shoppingCart.shoppingCartDispatch({
       type: THEME_ACTIONS.REMOVE_FROM_CART,
       item: [],
     });
-
     setOrder(false);
+    
   }
 
   return order ? (
