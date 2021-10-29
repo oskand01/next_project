@@ -14,24 +14,20 @@ export default function Store() {
   const [total, setTotal] = useState();
   const themeContext = useContext(ThemeContext);
   const [order, setOrder] = useState(false);
- console.log(themeContext.shoppingCart)
 
   let items = false;
+  
   if(themeContext.shoppingCart != false){
-    console.log("in update")
     updateCart()
   }
   
   useEffect(() => {
-    console.log ("inside set priuce");
-    console.log(themeContext.shoppingCart);
     let price = 0;
 
     themeContext.shoppingCart.shoppingCart.forEach((item) => {
       price += item.price;
     });
     setTotal(price);
-    console.log(total);
   });
  
   useEffect(() => {
@@ -39,7 +35,6 @@ export default function Store() {
   },themeContext.shoppingCart);
  
  function updateCart(){
-   console.log(themeContext.shoppingCart);
   items = themeContext.shoppingCart.shoppingCart.map((item) => (
     <CartItem
      key={item.name + Math.random().toString()}
@@ -47,11 +42,11 @@ export default function Store() {
      productsHandler={productsHandler}
     />
 ));
-console.log(items);
+
  }
   
   function productsHandler(name) {
-    themeContext.shoppingCart.shoppingCartDispatch( {type: THEME_ACTIONS.REMOVE_FROM_CART,testy:themeContext.shoppingCart.shoppingCart.filter((product) => product.name !== name)});
+    themeContext.shoppingCart.shoppingCartDispatch( {type: THEME_ACTIONS.REMOVE_FROM_CART,item:themeContext.shoppingCart.shoppingCart.filter((product) => product.name !== name)});
   }
 
   function confirmOrder() {
@@ -59,13 +54,14 @@ console.log(items);
   }
 
   function resetCart() {
-    setProducts([]);
+    themeContext.shoppingCart.shoppingCartDispatch( {type: THEME_ACTIONS.REMOVE_FROM_CART,item:[]});
+    
     //setContext when it´s done
     setOrder(false);
   }
-  console.log("before render");
+
   return order ? (
-    <ConfirmOrder products={products} total={total} resetOrder={resetCart} />
+    <ConfirmOrder products={themeContext.shoppingCart.shoppingCart} total={total} resetOrder={resetCart} />
   ) : (
     <div className={styles.store}>
       <div className={styles.sheader}>

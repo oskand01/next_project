@@ -8,26 +8,20 @@ export const THEME_ACTIONS = {
     ADD_TO_CART: 'addItem',
 }
 export function cartReducer (state, action){
-    console.log("in themeprovider");
     switch (action.type){
         case 'removeItem':
         {
-            console.log("removing item");
-            console.log(action.testy);
-           return(action.testy);
+           return(action.item);
         }
     }
     let tmpArray = [];
     if(state.shoppingCart == false){
-        console.log("in false")
         
         tmpArray.push(action);
-        console.log(tmpArray);
         return tmpArray;
     }
     
     tmpArray = Object.values(state);
-    console.log(tmpArray);
     tmpArray.push(action);
     return (tmpArray);
          

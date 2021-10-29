@@ -76,7 +76,7 @@ const clearFilter = () => {
 export async function getStaticProps() {
   const res = await fetch("http://hp-api.herokuapp.com/api/characters");
   const data = await res.json();
-  console.log(data);
+  
   for (let i = 0; i < data.length; i++) {
     Object.assign(data[i], { id: i });
     +Object.assign(data[i], { price: generatePrice() });

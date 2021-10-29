@@ -17,8 +17,8 @@ export default function ConfirmOrder({products, total, resetOrder}) {
           </ul>
               <p className={styles.confirmTotal}>Total: {total}:-</p>
         </div>
-        <div className={styles.confirmBtnHolder}><Link href={"/"} onClick={resetOrder}>
-            <button className={styles.confirm} >GO BACK</button>
+        <div className={styles.confirmBtnHolder}><Link href={"/"} >
+            <button className={styles.confirm} onClick={resetOrder} >GO BACK</button>
           </Link></div>
       </div>
     </div>

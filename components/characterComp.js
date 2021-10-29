@@ -4,7 +4,7 @@ import Link from "next/dist/client/link";
 
 
 export default function characterComp(props) {
-  console.log(props);
+  
   return (
     <div className={styles.characterCard}>
      
