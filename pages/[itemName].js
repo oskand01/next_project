@@ -24,7 +24,7 @@ export async function getStaticProps({ params }) {
   const data = await res.json();
 
   const character = data.filter((char) => char.name === name);
-  if (character[0].image === "") character[0].image = "/../public/avatar.jpg";
+  if (character[0].image === "") character[0].image = "/avatar.jpg";
   
   return {
     props: { char: character[0] },

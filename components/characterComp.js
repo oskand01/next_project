@@ -15,7 +15,7 @@ export default function characterComp(props) {
       <div
         className={styles.imageHolder}
         style={
-          props.charImage === "/../public/avatar.jpg"
+          props.charImage === "/avatar.jpg"
             ? { border: "1px solid rgb(44, 45, 46)" }
             : { border: "none" }
         }
