@@ -28,11 +28,11 @@
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   gap: 0.5rem;
-  tranistion: .3s;
+  transition: .2s;
 }
 
 .characterCard:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
   transform: scale(1.01);
 }
 
