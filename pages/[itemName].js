@@ -8,17 +8,17 @@ export async function getStaticPaths() {
     const res = await fetch("http://hp-api.herokuapp.com/api/characters");
     const data = await res.json();
 
-    const paths = data.map((item) => {
-        return {
-            params: {
-                itemName: item.name,
-            },
-        };
-    });
+  const paths = data.map((item) => {
     return {
-        paths: paths,
-        fallback: false,
+      params: {
+        itemName: item.name,
+      },
     };
+  });
+  return {
+    paths: paths,
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
@@ -73,19 +73,19 @@ export default function Item({ char }) {
                             {char.dateOfBirth}
                         </p>
 
-                        <p>
-                            <b>Eye Colour: </b>
-                            {char.eyeColour}
-                        </p>
-                        <p>
-                            <b>Hair Colour: </b>
-                            {char.hairColour}
-                        </p>
-                        <p>
-                            <b>Ancestry: </b>
-                            {char.ancestry}
-                        </p>
-                    </div>
+            <p>
+              <b>Eye Colour: </b>
+              {char.eyeColour}
+            </p>
+            <p>
+              <b>Hair Colour: </b>
+              {char.hairColour}
+            </p>
+            <p>
+              <b>Ancestry: </b>
+              {char.ancestry}
+            </p>
+          </div>
 
                     <button className={styles.button} onClick={() =>{
                         addToCart();
@@ -95,7 +95,8 @@ export default function Item({ char }) {
                 </div>
             </div>
         </div>
-    );
+    
+   
+  );
 }
-
 
