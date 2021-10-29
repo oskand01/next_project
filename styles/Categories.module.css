@@ -4,8 +4,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5px;
-    height: 35px;
+    margin-top: .3rem;
+    height: 2.5rem;
     background: rgb(44, 45, 46);
     color:pink;
     text-align: center;
