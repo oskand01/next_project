@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Pagination.module.css";
 import { GrNext, GrPrevious } from "react-icons/gr";
 
-export default function Pagination({ data, length, pageLimit, dataLimit }) {
+export default function Pagination({ data, length, pageLimit, dataLimit, addToCart }) {
   const [pages, setPages] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -50,6 +50,7 @@ export default function Pagination({ data, length, pageLimit, dataLimit }) {
             price={character.price}
             id={character.id}
             key={character.id}
+            addToCart={addToCart}
           />
         ))}
       </div>

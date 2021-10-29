@@ -4,7 +4,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function CartItem(props) {
   const deleteItem = () => {
-    props.productsHandler(props.item);
+    props.productsHandler(props.item.name);
   };
 
   return (

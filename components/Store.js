@@ -3,36 +3,50 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import styles from "../styles/Cart.module.css";
 import Link from "next/link";
 import CartItem from "../components/CartItem";
+import {useContext} from "react";
+import{
+  ThemeContext,
+  THEME_ACTIONS,
+} from "../components/context/ThemeProvider";
 import ConfirmOrder from "./ConfirmOrder";
 
-export default function Store(props) {
+export default function Store() {
   const [total, setTotal] = useState();
-  const [products, setProducts] = useState([]);
+  const themeContext = useContext(ThemeContext);
   const [order, setOrder] = useState(false);
 
-  const items = products.map((item) => (
-    <CartItem
-      key={item.name + Math.random().toString()}
-      item={item}
-      productsHandler={productsHandler}
-    />
-  ));
-
-  useEffect(() => {
-    setProducts(props.items);
-  }, []);
-
+  let items = false;
+  
+  if(themeContext.shoppingCart != false){
+    updateCart()
+  }
+  
   useEffect(() => {
     let price = 0;
 
-    products.forEach((item) => {
+    themeContext.shoppingCart.shoppingCart.forEach((item) => {
       price += item.price;
     });
     setTotal(price);
-  }, [products]);
+  });
+ 
+  useEffect(() => {
+    updateCart();
+  },themeContext.shoppingCart);
+ 
+ function updateCart(){
+  items = themeContext.shoppingCart.shoppingCart.map((item) => (
+    <CartItem
+     key={item.name + Math.random().toString()}
+     item={item}
+     productsHandler={productsHandler}
+    />
+));
 
-  function productsHandler(item) {
-    setProducts(products.filter((product) => product !== item));
+ }
+  
+  function productsHandler(name) {
+    themeContext.shoppingCart.shoppingCartDispatch( {type: THEME_ACTIONS.REMOVE_FROM_CART,item:themeContext.shoppingCart.shoppingCart.filter((product) => product.name !== name)});
   }
 
   function confirmOrder() {
@@ -40,13 +54,14 @@ export default function Store(props) {
   }
 
   function resetCart() {
-    setProducts([]);
+    themeContext.shoppingCart.shoppingCartDispatch( {type: THEME_ACTIONS.REMOVE_FROM_CART,item:[]});
+    
     //setContext when it´s done
     setOrder(false);
   }
 
   return order ? (
-    <ConfirmOrder products={products} total={total} resetOrder={resetCart} />
+    <ConfirmOrder products={themeContext.shoppingCart.shoppingCart} total={total} resetOrder={resetCart} />
   ) : (
     <div className={styles.store}>
       <div className={styles.sheader}>

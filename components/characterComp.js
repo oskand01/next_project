@@ -21,9 +21,6 @@ export default function characterComp(props) {
         }
       >      
         <Image
-          onClick={() => {
-            props.openCharInfo(props.id);
-          }}
           className={styles.characterImage}
           layout={"fill"}
           objectFit={"cover"}
