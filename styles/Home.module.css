@@ -40,6 +40,10 @@
   border: 1px solid rgb(44, 45, 46);
 }
 
+.imageHolder:hover {
+  cursor: pointer;
+}
+
 .characterImage {
   border-radius: 0;
   width: 100%;
@@ -87,15 +91,21 @@
   background: #01c355;
   border: none;
   border-radius: 0.3rem;
-  transition: 1s;
+  transition: .5s;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   width: 100%;
 }
 
 .hireButton:hover {
   cursor: pointer;
-  background: #039a44;
+  background: #04aa4c;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 6px 18px 0px;
+}
+
+.hireButton:active {
+  background: #027032;
+  transform: scale(1.05);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 16px 28px 0px;
 }
 
 @media screen and (max-width: 516px) {

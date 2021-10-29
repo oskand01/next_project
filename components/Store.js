@@ -13,29 +13,30 @@ import ConfirmOrder from "./ConfirmOrder";
 export default function Store() {
   const [total, setTotal] = useState();
   const [products, setProducts] = useState([]);
-  const themeContext = useContext(ThemeContext);
   const [order, setOrder] = useState(false);
+  const themeContext = useContext(ThemeContext);
+  let items = [];
 
-  const items = themeContext.shoppingCart.shoppingCart.map((item, index) => (
-    <CartItem
-      key={index}
-      item={item}
-      productsHandler={productsHandler}
-    />
-  ));
+  if (products.length > 0) {
+    items = products.map((item, index) => (
+      <CartItem key={index} item={item} productsHandler={productsHandler} />
+    ));
+  }
 
   useEffect(() => {
-    setProducts(themeContext.shoppingCart.shoppingCart);
-  }, []);
+    themeContext.shoppingCart.shoppingCart &&
+      setProducts(themeContext.shoppingCart.shoppingCart);
+  });
 
   useEffect(() => {
     let price = 0;
 
-    themeContext.shoppingCart.shoppingCart.forEach((item) => {
-      price += item.price;
-    });
+    products.length > 0 &&
+      products.forEach((item) => {
+        price += item.price;
+      });
     setTotal(price);
-  });
+  }, [products]);
 
   function productsHandler(item) {
     themeContext.shoppingCart.shoppingCartDispatch({
@@ -57,7 +58,6 @@ export default function Store() {
       item: [],
     });
 
-    //setContext when it´s done
     setOrder(false);
   }
 

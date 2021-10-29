@@ -35,13 +35,15 @@ export async function getStaticProps({ params }) {
 
 export default function Item({ char }) {
   const themeContext = useContext(ThemeContext);
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
-    console.log(themeContext.allChars.allchars)
-    const character = themeContext.allChars.allchars.filter((item) => item.name === char.name)
-    char.price = character[0].price
-  },[])
-
+    const character = themeContext.allChars.allChars.filter(
+      (product) => product.name === char.name
+    );
+    char.price = character[0].price;
+    setPrice(char.price);
+  }, []);
 
   function addToCart() {
     themeContext.shoppingCart.shoppingCartDispatch(char);
@@ -85,6 +87,10 @@ export default function Item({ char }) {
             <p>
               <b>Ancestry: </b>
               {char.ancestry}
+            </p>
+            <p>
+              <b>Price: </b>
+              {price && price}:-
             </p>
           </div>
 
