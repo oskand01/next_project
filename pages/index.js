@@ -13,9 +13,11 @@ export default function Home({ charProducts }) {
   const [filter, setFilter] = useState(false);
 
   useEffect(() => {
+    console.log(themeContext.allChars.allChars)
     !themeContext.allChars.allChars &&
       themeContext.allChars.setAllChars(charProducts);
-  }, []);
+      console.log("all chars set" ,themeContext.allChars.allChars)
+  });
 
   function addToCart(id) {
     themeContext.shoppingCart.shoppingCartDispatch(
