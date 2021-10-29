@@ -4,51 +4,69 @@ import styles from "../styles/Cart.module.css";
 import Link from "next/link";
 import CartItem from "../components/CartItem";
 import {useContext} from "react";
-import{ThemeContext} from "../components/context/ThemeProvider";
+import{
+  ThemeContext,
+  THEME_ACTIONS,
+} from "../components/context/ThemeProvider";
+import ConfirmOrder from "./ConfirmOrder";
 
-export default function Store(props) {
+export default function Store() {
   const [total, setTotal] = useState();
   const themeContext = useContext(ThemeContext);
-  let currentCart = themeContext.shoppingCart;
-  console.log(themeContext.shoppingCart);
+  const [order, setOrder] = useState(false);
+ console.log(themeContext.shoppingCart)
 
   let items = false;
-  if(currentCart != false){
+  if(themeContext.shoppingCart != false){
+    console.log("in update")
     updateCart()
   }
+  
   useEffect(() => {
+    console.log ("inside set priuce");
+    console.log(themeContext.shoppingCart);
     let price = 0;
 
-    currentCart.forEach((item) => {
+    themeContext.shoppingCart.shoppingCart.forEach((item) => {
       price += item.price;
     });
     setTotal(price);
+    console.log(total);
   });
  
   useEffect(() => {
-    console.log("in use effect");
     updateCart();
-  },currentCart);
+  },themeContext.shoppingCart);
  
  function updateCart(){
-  items = currentCart.map((item) => (
+   console.log(themeContext.shoppingCart);
+  items = themeContext.shoppingCart.shoppingCart.map((item) => (
     <CartItem
      key={item.name + Math.random().toString()}
      item={item}
      productsHandler={productsHandler}
     />
 ));
+console.log(items);
  }
   
   function productsHandler(name) {
-    themeContext.shoppingCartDispatch(currentCart.filter((product) => product.name !== name));
+    themeContext.shoppingCart.shoppingCartDispatch( {type: THEME_ACTIONS.REMOVE_FROM_CART,testy:themeContext.shoppingCart.shoppingCart.filter((product) => product.name !== name)});
   }
 
-  function clearProducts() {
+  function confirmOrder() {
+    setOrder(true);
+  }
+
+  function resetCart() {
     setProducts([]);
+    //setContext when it´s done
+    setOrder(false);
   }
-
-  return (
+  console.log("before render");
+  return order ? (
+    <ConfirmOrder products={products} total={total} resetOrder={resetCart} />
+  ) : (
     <div className={styles.store}>
       <div className={styles.sheader}>
         <AiOutlineShoppingCart className={styles.icon} />
@@ -67,7 +85,7 @@ export default function Store(props) {
       <div className={styles.sfooter}>
         <h3 className={styles.total}>Total: {total}:-</h3>
         {total > 0 ? (
-          <button className={styles.confirm} onClick={clearProducts}>
+          <button className={styles.confirm} onClick={confirmOrder}>
             CONFIRM ORDER
           </button>
         ) : (
