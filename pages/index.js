@@ -67,11 +67,11 @@ export async function getStaticProps() {
     Object.assign(data[i], { id: i });
     +Object.assign(data[i], { price: generatePrice() });
     if (data[i].image === "") {
-      data[i].image = "/../public/avatar.jpg";
+      data[i].image = "/avatar.jpg";
     }
   }
-  const withPic = data.filter((item) => item.image !== "/../public/avatar.jpg");
-  const noPic = data.filter((item) => item.image === "/../public/avatar.jpg");
+  const withPic = data.filter((item) => item.image !== "/avatar.jpg");
+  const noPic = data.filter((item) => item.image === "/avatar.jpg");
   const shuffledWithPic = arrayShuffle(withPic);
   const shuffledNoPic = arrayShuffle(noPic);
 
