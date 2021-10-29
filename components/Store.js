@@ -14,12 +14,17 @@ export default function Store() {
   const [total, setTotal] = useState();
   const themeContext = useContext(ThemeContext);
   const [order, setOrder] = useState(false);
+  
 
   let items = false;
   
-  if(themeContext.shoppingCart != false){
-    updateCart()
-  }
+  useEffect(() => {
+    if(themeContext.shoppingCart != false){
+      updateCart()
+    }
+   
+  }, []);
+  
   
   useEffect(() => {
     let price = 0;

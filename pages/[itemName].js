@@ -42,8 +42,8 @@ export default function Item({ char }) {
    
     
     function addToCart () {
-       
-        themeContext.shoppingCartDispatch(char); 
+      console.log(themeContext.shoppingCart.shoppingCart)
+      themeContext.shoppingCart.shoppingCartDispatch(char)
       }
 
     return (
@@ -87,9 +87,9 @@ export default function Item({ char }) {
             </p>
           </div>
 
-                    <button className={styles.button} onClick={() =>{
-                        addToCart();
-                    }}>
+                    <button className={styles.button} onClick={
+                        addToCart
+                    }>
                         Add in cart
                     </button>
                 </div>
