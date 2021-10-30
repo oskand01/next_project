@@ -105,5 +105,5 @@ export async function getStaticProps() {
 function generatePrice() {
   const maxPrice = 10000;
   const price = Math.floor(Math.random() * maxPrice).toString();
-  return parseInt(price.substr(0, price.length - 2) + "99");
+  return parseInt(price.substr(0, price.length - 1) + "9");
 }
