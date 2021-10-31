@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/dist/client/link";
 
 
-export default function characterComp(props) {
+export default function Character(props) {
   
   return (
     <div className={styles.characterCard}>
@@ -24,7 +24,7 @@ export default function characterComp(props) {
           className={styles.characterImage}
           layout={"fill"}
           objectFit={"cover"}
-          alt="test"
+          alt={props.name}
           src={props.charImage}
         />
         

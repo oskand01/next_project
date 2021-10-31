@@ -1,9 +1,15 @@
-import CharacterComp from "./characterComp";
+import Character from "./Character";
 import { useEffect, useState } from "react";
 import styles from "../styles/Pagination.module.css";
 import { GrNext, GrPrevious } from "react-icons/gr";
 
-export default function Pagination({ data, length, pageLimit, dataLimit, addToCart }) {
+export default function Pagination({
+  data,
+  length,
+  pageLimit,
+  dataLimit,
+  addToCart,
+}) {
   const [pages, setPages] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -44,7 +50,7 @@ export default function Pagination({ data, length, pageLimit, dataLimit, addToCa
     <div className={styles.container}>
       <div className={styles.characterWindow}>
         {getPaginatedData().map((character) => (
-          <CharacterComp
+          <Character
             name={character.name}
             charImage={character.image}
             price={character.price}
