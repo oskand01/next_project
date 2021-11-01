@@ -28,9 +28,8 @@ export function cartReducer (state, action){
 }
 const Themeprovider = ({ children }) =>{
     const [shoppingCart, shoppingCartDispatch] = useReducer(cartReducer, {shoppingCart: false});
-    const [allChars, setAllChars] = useState(false);
     return(
-        <ThemeContext.Provider value ={{shoppingCart:{shoppingCart, shoppingCartDispatch}, allChars:{allChars, setAllChars}}}>
+        <ThemeContext.Provider value ={{shoppingCart:{shoppingCart, shoppingCartDispatch}}}>
             {children}
         </ThemeContext.Provider>
     )

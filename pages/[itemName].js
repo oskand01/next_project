@@ -8,11 +8,12 @@ export default function Item({ char }) {
   const [price, setPrice] = useState("");
 
   useEffect(() => {
-    const character = themeContext.allChars.allChars.filter(
-      (product) => product.name === char.name
-    );
-    char.price = character[0].price;
-    setPrice(char.price);
+    if (window.sessionStorage.getItem("products")) {
+      const products = JSON.parse(window.sessionStorage.getItem("products"));
+      const character = products.find((product) => product.name === char.name);
+      char.price = character.price;
+      setPrice(char.price);
+    }
   }, []);
 
   function addToCart() {
