@@ -46,6 +46,13 @@ export default function Pagination({
     return new Array(pageLimit).fill().map((_, i) => start + i + 1);
   };
 
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+  const goToLastPage = () => {
+    setCurrentPage(pages);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.characterWindow}>
@@ -68,7 +75,15 @@ export default function Pagination({
         >
           <GrPrevious />
         </button>
+
         <div className={styles.pages}>
+          <button
+            onClick={goToFirstPage}
+            className={styles.pageNum}
+            disabled={currentPage <= 5}
+          >
+            1...
+          </button>
           {getPaginationGroup().map((item, index) => (
             <button
               key={index}
@@ -81,6 +96,13 @@ export default function Pagination({
               <span>{item}</span>
             </button>
           ))}
+          <button
+            onClick={goToLastPage}
+            className={styles.pageNum}
+            disabled={currentPage > pages - 5}
+          >
+            ...{pages}
+          </button>
         </div>
 
         <button
