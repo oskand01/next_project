@@ -13,8 +13,10 @@ export default function Home({ charProducts }) {
   const [filter, setFilter] = useState(false);
 
   useEffect(() => {
-    !themeContext.allChars.allChars &&
-      themeContext.allChars.setAllChars(charProducts);
+    if (window) {
+      const storage = window.sessionStorage;
+      storage.setItem("products", JSON.stringify(charProducts));
+    }
   }, []);
 
   function addToCart(id) {
@@ -102,7 +104,7 @@ export async function getStaticProps() {
   return { props: { charProducts: [...shuffledWithPic, ...shuffledNoPic] } };
 }
 
-function generatePrice() {
+export function generatePrice() {
   const maxPrice = 10000;
   const price = Math.floor(Math.random() * maxPrice).toString();
   return parseInt(price.substr(0, price.length - 1) + "9");
