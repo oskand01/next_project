@@ -12,7 +12,7 @@ export default function Header() {
   const context = useContext(ThemeContext);
 
   useEffect(() => {
-    context.shoppingCart.shoppingCart.length &&
+    context.shoppingCart.shoppingCart &&
       setCartCount(context.shoppingCart.shoppingCart.length);
   });
 
