@@ -83,12 +83,14 @@
   .paginationContainer {
     width: 100%;
   }
-  }
+}
 
 @media screen and (max-width: 485px) {
-  .characterWindow{ padding: 2rem .5rem;}
-.paginationContainer {
-  padding: 0rem 2rem;
-
-}
+  .characterWindow {
+    padding: 2rem 0.5rem;
+  }
+  .paginationContainer {
+    padding: 0rem 2rem;
+    font-size: 0.9rem;
+  }
 }
