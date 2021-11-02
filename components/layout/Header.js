@@ -25,7 +25,7 @@ export default function Header() {
           </Link>
         </div>
         <div className={styles.cartHolder}>
-          {cartCount > 1 && (
+          {cartCount > 1 && router.asPath !== "/shopping-cart" && (
             <span className={styles.cartCounter}>
               <p>{cartCount}</p>
             </span>
