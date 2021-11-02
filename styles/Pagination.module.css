@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-content: flex-start;
   height: 100%;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -19,7 +20,8 @@
 
 .paginationContainer {
   width: 80%;
-  padding: 0rem 4rem 0rem;
+  min-width: 350px;
+  padding: 0rem 4rem 0rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,5 +76,21 @@
 @media screen and (min-width: 1340px) {
   .characterWindow {
     min-width: 1300px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .paginationContainer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .characterWindow {
+    padding: 2rem 0.5rem;
+  }
+  .paginationContainer {
+    padding: 0rem 2rem;
+    font-size: 0.9rem;
   }
 }
