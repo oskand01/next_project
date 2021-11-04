@@ -1,0 +1,15 @@
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background:black;
+    color:pink;
+    text-align: center;  
+    height: 3rem;
+}
+
+.footer:hover {    
+    background:pink;
+    color:black;
+    
+}

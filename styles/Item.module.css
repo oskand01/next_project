@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 5rem);
+    color: rgb(44, 45, 46);
+    padding: 2rem;
+    justify-content: center;
+}
+/* CARTITEM */
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    gap: 5rem;
+}
+
+.button {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: auto;
+    width: max-content;
+    align-self: center;
+}
+
+.imageHolder {
+    position: relative;
+    width: 30rem;
+    height: 38rem;
+    min-width: 100px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    height: 38rem;
+    justify-content: space-between;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+}
+
+.info h2 {
+    margin: 0;
+}
